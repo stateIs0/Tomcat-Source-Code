@@ -1,0 +1,63 @@
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+
+  This is excludes file for Apache RAT tool run by ASF Buildbot,
+  http://incubator.apache.org/rat/
+
+  The following files are excluded:
+
+  - *.html files in documentation are generated from XML sources
+  - *.md5 files are generated and cannot contain license
+  - *.manifest JAR manifest files cannot contain license
+  - package-list files in API documentation (javadoc) are generated
+  - bug52121-part1, bug52121-part2 files in tests are test data for a hard
+  to reproduce testcase and should be used as is.
+  - other trivial test files, such as textual files containing only "OK' string,
+  are also excluded.
+
+output/build/webapps/docs/*.html
+output/build/webapps/docs/appdev/*.html
+output/build/webapps/docs/architecture/*.html
+output/build/webapps/docs/config/*.html
+output/build/webapps/docs/funcspecs/*.html
+output/build/webapps/docs/tribes/*.html
+output/deployer/deployer-howto.html
+output/dist/webapps/docs/*.html
+output/dist/webapps/docs/appdev/*.html
+output/dist/webapps/docs/architecture/*.html
+output/dist/webapps/docs/config/*.html
+output/dist/webapps/docs/funcspecs/*.html
+output/dist/webapps/docs/tribes/*.html
+output/embed/*.md5
+output/extras/*.md5
+modules/jdbc-pool/resources/MANIFEST.MF
+output/dist/src/modules/jdbc-pool/resources/MANIFEST.MF
+output/dist/src/res/META-INF/*.manifest
+output/jdbc-pool/resources/MANIFEST.MF
+output/manifests/*.manifest
+res/META-INF/*.manifest
+output/dist/webapps/docs/api/package-list
+output/dist/webapps/docs/elapi/package-list
+output/dist/webapps/docs/jspapi/package-list
+output/dist/webapps/docs/servletapi/package-list
+output/dist/src/test/org/apache/coyote/http11/filters/bug52121-part1
+output/dist/src/test/org/apache/coyote/http11/filters/bug52121-part2
+output/dist/src/test/webapp-3.0/bug53257/*.txt
+output/dist/src/test/webapp-3.0-fragments/WEB-INF/classes/*.txt
+test/org/apache/coyote/http11/filters/bug52121-part1
+test/org/apache/coyote/http11/filters/bug52121-part2
+test/webapp-3.0/bug53257/*.txt
+test/webapp-3.0-fragments/WEB-INF/classes/*.txt

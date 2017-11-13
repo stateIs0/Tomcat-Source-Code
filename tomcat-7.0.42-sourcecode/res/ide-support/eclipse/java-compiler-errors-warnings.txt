@@ -1,0 +1,83 @@
+================================================================================
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+================================================================================
+
+# Java -> Compiler -> Errors/Warnings
+
+The following settings are for Indigo Release
+W = Warning
+I = Ignore
+E = Error
+
+Code style
+ - Non-static access to static member   - W
+ - Indirect access to static member     - I
+ - Unqualified access to instance field - I
+ - Undocumented empty block             - I
+ - Access to a non-accessible member... - I
+ - Method with a constructor name       - W
+ - Parameter assignment                 - I
+ - Non-externalized strings             - I
+ - Method can be static                 - I (Eclipse 3.7+)
+ - Method can potentially be static     - I (Eclipse 3.7+)
+Potential programming errors
+ - All                                  - W
+Name shadowing and conflicts
+ - Field declaration hides another...   - I
+ - Local variable declaration hides..   - I
+ - Type parameter hides another type    - W
+ - Method does not override...          - W
+ - Interface method conflicts...        - W
+Deprecated and restricted API
+ - Deprecated API                       - W
+   (no additional check boxes)
+ - Forbidden references                 - E
+ - Discouraged reference                - W
+Unnecessary code
+ - Unnecessary else                     - I
+ - The rest                             - W
+   (all additional check boxes)
+Generic types
+ - All                                  - W
+   (ignore unavoidable generics warnings)   (Eclipse 3.7+)
+Annotations
+ - All                                  - W
+   (all additional check boxes)
+
+Note: The list of codes supported in @SuppressWarnings annotation in
+Eclipse IDE is documented here:
+
+ 3.6: http://help.eclipse.org/helios/topic/org.eclipse.jdt.doc.isv/guide/jdt_api_compile.htm
+ 3.7: http://help.eclipse.org/indigo/topic/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
+
+
+# Java -> Code Style -> Organize Imports
+
+The following configuration of Organize Imports can be recommended for a
+quick setup. The order is enforced by checkstyle, so for the authorative
+definition look at <module name="ImportOrder"> in
+res/checkstyle/checkstyle.xml
+
+ - java
+ - javax
+ - async
+ - jsp2
+ - [static] org.junit
+ - org.junit
+ - [static] org
+ - org
+ - com
+ - util

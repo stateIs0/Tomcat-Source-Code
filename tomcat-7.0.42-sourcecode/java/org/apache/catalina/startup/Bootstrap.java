@@ -28,11 +28,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
-
 import org.apache.catalina.Globals;
 import org.apache.catalina.security.SecurityClassLoad;
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
@@ -498,14 +496,16 @@ public final class Bootstrap {
      */
     private void setCatalinaBase() {
 
-        if (System.getProperty(Globals.CATALINA_BASE_PROP) != null)
+        if (System.getProperty(Globals.CATALINA_BASE_PROP) != null) {
             return;
-        if (System.getProperty(Globals.CATALINA_HOME_PROP) != null)
+        }
+        if (System.getProperty(Globals.CATALINA_HOME_PROP) != null) {
             System.setProperty(Globals.CATALINA_BASE_PROP,
-                               System.getProperty(Globals.CATALINA_HOME_PROP));
-        else
+                System.getProperty(Globals.CATALINA_HOME_PROP));
+        } else {
             System.setProperty(Globals.CATALINA_BASE_PROP,
-                               System.getProperty("user.dir"));
+                System.getProperty("user.dir"));
+        }
 
     }
 

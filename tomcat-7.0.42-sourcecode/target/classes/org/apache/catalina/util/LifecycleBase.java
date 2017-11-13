@@ -90,15 +90,41 @@ public abstract class LifecycleBase implements Lifecycle {
         lifecycle.fireLifecycleEvent(type, data);
     }
 
-    
+
+    /**
+     * public final void lifecycleMethod() throws LifecycleException {
+     *
+     //检查组件的状态
+     statteCheck();
+
+     //设置组件状态为准备进入相应生命周期的状态
+     setStateInternal(LifecycleState.BEFORE_STATE,null,false);
+
+     //调用相应的生命周期的模板方法的实现
+     lifecycleMethodInternal();
+
+     //设置组件状态为进入相应生命周期后的状态
+     setStateInternal(LifecycleState.AFTER_STATE,null,false);
+     }
+     * @throws LifecycleException
+     */
     @Override
     public final synchronized void init() throws LifecycleException {
+        // 1
         if (!state.equals(LifecycleState.NEW)) {
             invalidTransition(Lifecycle.BEFORE_INIT_EVENT);
         }
+        // 2
+        // 钩子方法
         setStateInternal(LifecycleState.INITIALIZING, null, false);
 
         try {
+            // 模板方法
+            /**
+             * 采用模板方法模式来对所有支持生命周期管理的组件的生命周期各个阶段进行了总体管理，
+             * 每个需要生命周期管理的组件只需要继承这个基类，
+             * 然后覆盖对应的钩子方法即可完成相应的声明周期阶段的管理工作
+             */
             initInternal();
         } catch (Throwable t) {
             ExceptionUtils.handleThrowable(t);
@@ -107,10 +133,14 @@ public abstract class LifecycleBase implements Lifecycle {
                     sm.getString("lifecycleBase.initFail",toString()), t);
         }
 
+        // 3
         setStateInternal(LifecycleState.INITIALIZED, null, false);
     }
-    
-    
+
+    /**
+     * // 模板方法
+     * @throws LifecycleException
+     */
     protected abstract void initInternal() throws LifecycleException;
     
     /**

@@ -687,6 +687,7 @@ public class MBeanFactory {
 
     /**
      * Creates a new StandardService and StandardEngine.
+     * 创建一个新的标准服务和标准引擎。
      *
      * @param domain       Domain name for the container instance
      * @param defaultHost  Name of the default host to be used in the Engine

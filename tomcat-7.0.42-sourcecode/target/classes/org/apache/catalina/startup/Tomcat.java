@@ -474,7 +474,9 @@ public class Tomcat {
 
     /**
      * Get the server object. You can add listeners and few more
-     * customizations. JNDI is disabled by default.  
+     * customizations. JNDI is disabled by default.
+     *
+     * 服务器对象。你可以添加监听器定制。缺省情况下，JNDI是禁用的。
      */
     public Server getServer() {
         
@@ -491,6 +493,7 @@ public class Tomcat {
         
         service = new StandardService();
         service.setName("Tomcat");
+        // 此server 就是tomcat，
         server.addService( service );
         return server;
     }

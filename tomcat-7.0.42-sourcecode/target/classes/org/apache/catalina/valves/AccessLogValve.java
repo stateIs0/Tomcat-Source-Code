@@ -157,6 +157,10 @@ import org.apache.tomcat.util.buf.B2CConverter;
  * @author Peter Rossbach
  *
  * @version $Id: AccessLogValve.java 1495888 2013-06-23 20:25:46Z markt $
+ *
+ * tomcat 代码量巨大，就像阅读所有的源码一样，只阅读核心源码，类似Spring的IOC，AOP
+ * 而tomcat 中的核心代码就是connector 连接器， Container 容器， Lifecycle 声明周期管理（关闭钩子hook）,
+ * JMX和MBean。
  */
 
 public class AccessLogValve extends ValveBase implements AccessLog {

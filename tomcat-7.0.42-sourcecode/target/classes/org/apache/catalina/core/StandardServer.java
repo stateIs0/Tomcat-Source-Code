@@ -57,6 +57,17 @@ import org.apache.tomcat.util.res.StringManager;
  *
  * @author Craig R. McClanahan
  * @version $Id: StandardServer.java 1305949 2012-03-27 18:41:42Z markt $
+ *
+ *
+ *
+ */
+
+/**
+ * // stateis0
+ * 此类是Server 标准实现类，Server 仅此一个实现类。
+ * 是Tomcat 顶级容器。Server是Tomcat中最顶层的组件，它可以包含多个Service组件
+ *
+ * 此类重点关注两个方法：addService() 和findService（String)
  */
 public final class StandardServer extends LifecycleMBeanBase implements Server {
 
@@ -134,6 +145,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
 
     /**
      * The set of Services associated with this Server.
+     * 用于管理Service的数组
      */
     private Service services[] = new Service[0];
 
@@ -344,8 +356,17 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
 
     /**
      * Add a new Service to the set of defined Services.
-     *
+     * 向已定义服务的集合添加一个新服务。
      * @param service The Service to be added
+     *
+     *
+     *  org.apache.catalina.mbeans.MBeanFactory.createStandardServiceEngine 714line 调用了
+     *  此方法，但是IDEA显示该方法并没有被任何地方调用
+     *
+     *  org.apache.catalina.startup.Tomcat.getServer(Service)
+     *  此方法注释：服务器对象。你可以添加监听器定制。缺省情况下，JNDI是禁用的。
+     *
+     *
      */
     @Override
     public void addService(Service service) {

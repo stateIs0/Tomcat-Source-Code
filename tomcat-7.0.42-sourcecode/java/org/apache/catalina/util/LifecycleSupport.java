@@ -108,6 +108,10 @@ public final class LifecycleSupport {
      * occurred for this Container.  The default implementation performs
      * this notification synchronously using the calling thread.
      *
+     * 通知所有生命周期事件侦听器，一个特定事件
+       这个容器发生了。默认实现执行
+       此通知同步使用调用线程。
+     *
      * @param type Event type
      * @param data Event data
      */
@@ -115,6 +119,7 @@ public final class LifecycleSupport {
 
         LifecycleEvent event = new LifecycleEvent(lifecycle, type, data);
         LifecycleListener interested[] = listeners;
+        // 循环通知所有生命周期时间侦听器????
         for (int i = 0; i < interested.length; i++)
             interested[i].lifecycleEvent(event);
 

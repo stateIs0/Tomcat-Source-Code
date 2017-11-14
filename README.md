@@ -4,7 +4,10 @@
 
 ### Quick Start!! 快速开始
 
-star 之后点击clone， 使用IDEA 或 eclipse （本人是IDEA）配置 VM options，然后Run Bootstrap
+star 之后点击clone， 使用IDEA 或 eclipse （本人是IDEA）配置 VM options，
+配置 maven , 配置 output 目录.
+
+然后Run Bootstrap
 
 
 VM options参数：

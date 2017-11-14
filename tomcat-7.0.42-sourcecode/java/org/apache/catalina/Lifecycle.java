@@ -22,6 +22,12 @@ package org.apache.catalina;
  * may implement this interface (as well as the appropriate interface(s) for
  * the functionality they support) in order to provide a consistent mechanism
  * to start and stop the component.
+ *
+ * 组件生命周期方法的通用接口。卡特琳娜组件
+   可以实现这个接口(以及适当的接口(s)
+   为了提供一致的机制，他们支持的功能)
+   启动和停止组件。
+ *
  * <br>
  * The valid state transitions for components that support {@link Lifecycle}
  * are:
@@ -252,6 +258,13 @@ public interface Lifecycle {
      *                          transitions to {@link LifecycleState#STARTED}.
      *                          </li>
      * </ol>
+     *
+     *
+     * 为积极使用公共方法的开始做好准备
+       该组件的属性getter/setter和生命周期方法。这
+       方法在任何公共方法之前都应该被调用
+       该组件的属性getter/setter和生命周期方法
+       利用。下面的@link LifecycleEvent将被触发
      *
      * @exception LifecycleException if this component detects a fatal error
      *  that prevents this component from being used

@@ -733,16 +733,29 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
 
 
     /**
+     *
+     * 容器通过Lifecycle接口管理容器的生命周期,
+     * 在父容器状态改变时通知所有子容器, 观察者模式.
+     *
+     * 启动嵌套组件且实现需求?????
      * Start nested components ({@link Service}s) and implement the requirements
      * of {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
      *
      * @exception LifecycleException if this component detects a fatal error
      *  that prevents this component from being used
+     *
+     * startInternal 启动内部???
+     *
+     * 调用LifecycleBase的fireLifecycleEvent(LifecycleListener listener)方法，LifecycleBase是一个抽象类，实现了Lifecycle接口
+       继续调用LifecycleSupport（是一个辅助完成对已经注册监听器的事件通知类，不可被继承，使用final)的fireLifecycleEvent(String type, Object data)方法
+       完成事件通知
      */
     @Override
     protected void startInternal() throws LifecycleException {
 
+
         fireLifecycleEvent(CONFIGURE_START_EVENT, null);
+        // 设置状态? 状态模式?
         setState(LifecycleState.STARTING);
 
         globalNamingResources.start();

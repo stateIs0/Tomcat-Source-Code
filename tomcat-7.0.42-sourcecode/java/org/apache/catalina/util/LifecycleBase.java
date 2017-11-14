@@ -42,13 +42,15 @@ public abstract class LifecycleBase implements Lifecycle {
 
     /**
      * Used to handle firing lifecycle events.
-     * TODO: Consider merging LifecycleSupport into this class.
+     * 用于处理燃烧的生命周期事件
+     * TODO: Consider merging LifecycleSupport into this class.考虑将生命周期合并到这个类中
      */
     private LifecycleSupport lifecycle = new LifecycleSupport(this);
 
 
     /**
      * The current state of the source component.
+     * 源组件的当前状态
      */
     private volatile LifecycleState state = LifecycleState.NEW;
 
@@ -82,7 +84,10 @@ public abstract class LifecycleBase implements Lifecycle {
     
     /**
      * Allow sub classes to fire {@link Lifecycle} events.
-     * 
+     *
+     * 允许子类干啥????
+     *
+     * 注意: 此方法被多处调用
      * @param type  Event type
      * @param data  Data associated with event.
      */

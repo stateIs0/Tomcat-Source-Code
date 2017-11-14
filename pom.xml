@@ -3,8 +3,8 @@
     
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.imtiger</groupId>
-    <artifactId>tomcat-study</artifactId>
-    <name>Tomcat 7.0 Study</name>
+    <artifactId>Tomcat-Source-Code</artifactId>
+    <name>Tomcat 7.0 Source Code</name>
     <version>1.0</version>
     <packaging>pom</packaging>
 

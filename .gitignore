@@ -2,5 +2,8 @@
 .DS_STORE
 .svn
 .iml
+target/
+tomcat-study.iml
+
 
 

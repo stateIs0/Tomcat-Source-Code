@@ -51,6 +51,8 @@ import org.apache.juli.logging.LogFactory;
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  * @version $Id: Bootstrap.java 1428018 2013-01-02 20:41:24Z markt $
+`` *
+ * 启动类
  */
 
 public final class Bootstrap {
@@ -86,6 +88,7 @@ public final class Bootstrap {
 
     private void initClassLoaders() {
         try {
+            // 创建一个"组件" 类加载器
             commonLoader = createClassLoader("common", null);
             if( commonLoader == null ) {
                 // no config file, default to this loader - we might be in a 'single' env.
@@ -104,17 +107,26 @@ public final class Bootstrap {
     private ClassLoader createClassLoader(String name, ClassLoader parent)
         throws Exception {
 
+        // 获取 ${catalina.base}/lib,
+        // ${catalina.base}/lib/*.jar,
+        // ${catalina.home}/lib,
+        // ${catalina.home}/lib/*.jar
         String value = CatalinaProperties.getProperty(name + ".loader");
         if ((value == null) || (value.equals("")))
             return parent;
 
+        // Value= catalina-home/lib,
+        // catalina-home/lib/*.jar,
+        // catalina-home/lib,
+        // catalina-home/lib/*.jar
         value = replace(value);
 
+//      ClassLoaderFactory  中的一个静态内部类, 有2个属性, location, type, 某个位置的某种类型的文件??
         List<Repository> repositories = new ArrayList<Repository>();
-
+      // 字符串标记类,
         StringTokenizer tokenizer = new StringTokenizer(value, ",");
         while (tokenizer.hasMoreElements()) {
-            String repository = tokenizer.nextToken().trim();
+            String repository = tokenizer.nextToken().trim();// 根据,分割 value,获取到每一个目录
             if (repository.length() == 0) {
                 continue;
             }
@@ -122,10 +134,10 @@ public final class Bootstrap {
             // Check for a JAR URL repository
             try {
                 @SuppressWarnings("unused")
-                URL url = new URL(repository);
-                repositories.add(
+                URL url = new URL(repository);// 根据目录名称创建一个 URL
+                repositories.add( // 向集合添加URL 类型的文件位置, 构造参数是"位置", 类型"URL";
                         new Repository(repository, RepositoryType.URL));
-                continue;
+                continue;// 跳出当前循环
             } catch (MalformedURLException e) {
                 // Ignore
             }
@@ -145,7 +157,7 @@ public final class Bootstrap {
             }
         }
 
-        ClassLoader classLoader = ClassLoaderFactory.createClassLoader
+        ClassLoader classLoader = ClassLoaderFactory.createClassLoader// 创建类加载器, 如果parent 是0,则
             (repositories, parent);
 
         // Retrieving MBean server
@@ -167,7 +179,7 @@ public final class Bootstrap {
 
     /**
      * System property replacement in the given string.
-     * 
+     *
      * @param str The original string
      * @return the modified string
      */
@@ -213,15 +225,19 @@ public final class Bootstrap {
 
     /**
      * Initialize daemon.
+     *
      */
     public void init()
         throws Exception
     {
 
         // Set Catalina path
+        // 设置 catalinaHome
         setCatalinaHome();
+        // 设置 Catalina 工作目录
         setCatalinaBase();
 
+        // 初始化类加载器,重要的一个步骤
         initClassLoaders();
 
         Thread.currentThread().setContextClassLoader(catalinaLoader);
@@ -412,46 +428,68 @@ public final class Bootstrap {
     /**
      * Main method and entry point when starting Tomcat via the provided
      * scripts.
+     * 通过提供的脚本启动Tomcat时，主要方法和入口点。
+     *
      *
      * @param args Command line arguments to be processed
      */
     public static void main(String args[]) {
 
-        System.out.println("Have fun and Enjoy! cxs");
+        System.err.println("Have fun and Enjoy! cxs");
 
-
+        // daemon 就是 bootstrap
         if (daemon == null) {
-            // Don't set daemon until init() has completed
+            // Don't set daemon until init() has completed 不要在init()完成之前设置守护者
+            // 如果守护线程是 null 创建一个 bootstrap
             Bootstrap bootstrap = new Bootstrap();
             try {
+                // 初始化
                 bootstrap.init();
             } catch (Throwable t) {
+                // 处理异常(抛出)
                 handleThrowable(t);
+                // 打印异常
                 t.printStackTrace();
+                // 结束
                 return;
             }
+            // 初始化结束后, 设置bootstrap 为守护者
             daemon = bootstrap;
         } else {
             // When running as a service the call to stop will be on a new
             // thread so make sure the correct class loader is used to prevent
             // a range of class not found exceptions.
+            /*
+            当作为一个服务运行时，停止的呼叫将会在一个新的
+            线程，确保正确的类装入器用于防止
+            一系列的类没有发现异常。
+             */
+
+            // 如果已经初始化过了, 则将该线程的类加载器设置为 bootstrap 的类加载器
             Thread.currentThread().setContextClassLoader(daemon.catalinaLoader);
         }
 
         try {
+            // 命令
             String command = "start";
+            // 如果命令行中输入了参数
             if (args.length > 0) {
+                // 命令 = 最后一个命令
                 command = args[args.length - 1];
             }
-
+            // 如果命令是启动
             if (command.equals("startd")) {
                 args[args.length - 1] = "start";
                 daemon.load(args);
                 daemon.start();
-            } else if (command.equals("stopd")) {
+            }
+            // 如果命令是停止了
+            else if (command.equals("stopd")) {
                 args[args.length - 1] = "stop";
                 daemon.stop();
-            } else if (command.equals("start")) {
+            }
+            // 如果命令是启动
+            else if (command.equals("start")) {
                 daemon.setAwait(true);
                 daemon.load(args);
                 daemon.start();
@@ -474,6 +512,7 @@ public final class Bootstrap {
             }
             handleThrowable(t);
             t.printStackTrace();
+            // 非正常退出
             System.exit(1);
         }
 
@@ -496,6 +535,7 @@ public final class Bootstrap {
      */
     private void setCatalinaBase() {
 
+        // 获取到 Catalina-home
         if (System.getProperty(Globals.CATALINA_BASE_PROP) != null) {
             return;
         }
@@ -513,25 +553,34 @@ public final class Bootstrap {
     /**
      * Set the <code>catalina.home</code> System property to the current
      * working directory if it has not been set.
+     *
+     * catalina home 默认是 tomcat 根目录
      */
     private void setCatalinaHome() {
 
+        // 获取到 Catalina-home
         if (System.getProperty(Globals.CATALINA_HOME_PROP) != null)
             return;
+        // 如果获取不到 Catalina Home
+        // 从项目根目录获取 jar 包
         File bootstrapJar =
             new File(System.getProperty("user.dir"), "bootstrap.jar");
+        // 如果 jar 存在
         if (bootstrapJar.exists()) {
             try {
+              // 设置 Catalina Home 为刚刚查询到的 jar 包 路径
                 System.setProperty
                     (Globals.CATALINA_HOME_PROP,
                      (new File(System.getProperty("user.dir"), ".."))
                      .getCanonicalPath());
             } catch (Exception e) {
                 // Ignore
+              // 如果错误则设置项目根目录路
                 System.setProperty(Globals.CATALINA_HOME_PROP,
                                    System.getProperty("user.dir"));
             }
         } else {
+          // 如果 jar 不存在, 设置项目根目录
             System.setProperty(Globals.CATALINA_HOME_PROP,
                                System.getProperty("user.dir"));
         }

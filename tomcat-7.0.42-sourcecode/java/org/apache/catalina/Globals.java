@@ -310,4 +310,10 @@ public final class Globals {
      * the tomcat instance installation path
      */
     public static final String CATALINA_BASE_PROP = "catalina.base";
+
+
+    public static void main(String[] args) {
+        System.out.println(System.getProperty(CATALINA_BASE_PROP));
+        System.out.println(System.getProperty("user.dir"));
+    }
 }

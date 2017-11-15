@@ -84,6 +84,7 @@ public class CatalinaProperties {
 
     /**
      * Load properties.
+     * 加载配置文件
      */
     private static void loadProperties() {
 

@@ -493,7 +493,7 @@ public class Tomcat {
         
         service = new StandardService();
         service.setName("Tomcat");
-        // 此server 就是tomcat，
+        // 此server 就是tomcat
         server.addService( service );
         return server;
     }

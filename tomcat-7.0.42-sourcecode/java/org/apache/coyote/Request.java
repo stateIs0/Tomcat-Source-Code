@@ -42,6 +42,20 @@ import org.apache.tomcat.util.http.Parameters;
  *
  * For lazy evaluation, the request uses the getInfo() hook. The following ids
  * are defined:
+ *
+     这是对服务器请求的低层次、有效的表示。大多数
+     字段是GC-free的，昂贵的操作被延迟到用户代码中
+     *需要的信息。
+     *
+     使用钩子机制将处理委托给模块。
+     *
+     这个类不是针对用户代码的，而是由tomcat内部使用的
+     以最有效的方式处理请求。用户(servlet)可以
+     使用facade来访问信息，它提供了高级视图
+     *的请求。
+ *
+ 对于延迟的评估，请求使用getInfo()钩子。下面的id
+ *定义:
  * <ul>
  *  <li>req.encoding - returns the request encoding
  *  <li>req.attribute - returns a module-specific attribute ( like SSL keys, etc ).
@@ -476,7 +490,7 @@ public final class Request {
 
     // -------------------- Recycling -------------------- 
 
-
+    // 循环使用
     public void recycle() {
         bytesRead=0;
 

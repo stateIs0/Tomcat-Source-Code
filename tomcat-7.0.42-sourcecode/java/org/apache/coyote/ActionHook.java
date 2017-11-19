@@ -31,6 +31,15 @@ package org.apache.coyote;
  * This interface is typically implemented by ProtocolHandlers, and the param
  * is usually a Request or Response object.
  *
+ *   行动钩。动作表示所使用的回调机制
+     土狼的servlet容器，要求对土狼的连接器进行操作。
+     在ActionCode中定义了一些标准操作行为是允许的。
+
+     param对象可用于传递和返回与此相关的信息
+     *行动。
+ *
+ * 该接口通常由协议处理程序和param实现。通常是一个请求或响应对象。
+ *
  * @author Remy Maucherat
  */
 public interface ActionHook {

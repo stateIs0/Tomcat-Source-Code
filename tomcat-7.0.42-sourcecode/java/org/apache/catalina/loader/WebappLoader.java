@@ -80,6 +80,14 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  * @version $Id: WebappLoader.java 1451065 2013-02-28 00:53:29Z markt $
+ *
+ *
+ *  类加载器实现，专门用于处理web
+    以最有效的方式使用应用程序，同时还可以使用卡特琳娜
+    对资源的访问是通过DirContext接口进行的)。
+    这个类装入器支持对修改的检测Java类，可以用来实现自动重载支持。
+     * < p >
+    这个类装入器是通过添加目录的路径名来配置的，
  */
 
 public class WebappLoader extends LifecycleMBeanBase

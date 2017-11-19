@@ -36,6 +36,14 @@ import java.util.List;
  * Since this class is loaded by {@link WebappClassLoader}, it can not refer to
  * any internal Tomcat classes as that will cause the security manager to
  * complain.
+ *
+ *
+ *   这个类由@link WebappClassLoader加载，以便启用它
+     由web应用程序遗忘的JDBC驱动程序。有一些
+     相关的类加载技巧——参见@link WebappClassLoader clearreferences()
+     关于细节，但是短版本并不仅仅是创建一个新的实例
+     这个类带有新的关键字。
+     由于这个类是由@link WebappClassLoader加载的，所以它不能引用
  */
 public class JdbcLeakPrevention {
 

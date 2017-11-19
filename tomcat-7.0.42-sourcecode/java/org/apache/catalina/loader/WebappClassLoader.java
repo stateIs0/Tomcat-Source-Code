@@ -117,6 +117,38 @@ import org.apache.tomcat.util.res.StringManager;
  * TODO: Is there any requirement to provide a proper Lifecycle implementation
  *       rather than the current stubbed implementation?
  *
+ *
+ *       专业的web应用程序类装入器。
+ * < p >
+       这个类装入器是一个完整的重新实现
+       来自JDK的URLClassLoader。它的设计是完全的
+       虽然它的内部是一个正常的代码，但是它的内部
+       行为可能是完全不同的。
+       * < p >
+       实现提示:在默认情况下，这个类装入器如下
+       规范要求的委托模型。系统类加载器将首先被查询，然后是本地存储库，然后才会被查询
+       将会出现对父类装入器的委托。这使得网络
+       应用程序覆盖除了来自J2SE的类之外的任何共享类。
+       特殊处理是由JAXP XML解析器接口、JNDI提供的
+       接口和来自servlet API的类，这些类从未加载
+       从网络应用程序库中。委托财产
+       允许应用程序修改该行为以移动父类装入器
+       在本地存储库前面。
+       实现的作用是:由于Jasper的限制
+       编译技术，任何包含类的存储库
+       servlet API将被类装入器忽略。
+       实现提示:类装入器生成源
+       当一个类从一个JAR文件加载时，包含完整的JAR URL的URL，
+       这允许在类级别设置安全权限，即使是在
+       类包含在一个JAR中。
+       实现提示:本地存储库被搜索
+       它们通过初始构造函数和/或随后的任何形式添加的顺序
+       对地址的调用()或代码的输入，或代码的输入。
+       执行提示:不检查是否有密封违规
+       除非有安全管理人员在场，否则安全是必须的。
+       TODO:是否有必要提供一个适当的生命周期实现
+       而不是当前的实现?
+ *
  * @author Remy Maucherat
  * @author Craig R. McClanahan
  * @version $Id: WebappClassLoader.java 1479177 2013-05-04 21:11:18Z markt $

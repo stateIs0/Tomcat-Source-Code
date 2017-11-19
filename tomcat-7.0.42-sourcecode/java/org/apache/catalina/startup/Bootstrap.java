@@ -88,13 +88,16 @@ public final class Bootstrap {
 
     private void initClassLoaders() {
         try {
-            // 创建一个"组件" 类加载器
+            // 创建一个"公用" 类加载器 父类加载器为 null
             commonLoader = createClassLoader("common", null);
             if( commonLoader == null ) {
                 // no config file, default to this loader - we might be in a 'single' env.
-                commonLoader=this.getClass().getClassLoader();
+                commonLoader=this.getClass().getClassLoader();// 如果为 null, 则使用默认的 classloader
             }
+            // 下面两个类加载的父加载器为上面的公用加载器
+            // catalina.properties 中 key:server.loader=    value 为空, 所以直接返回  父类加载器
             catalinaLoader = createClassLoader("server", commonLoader);
+            // 同上...返回父类加载器
             sharedLoader = createClassLoader("shared", commonLoader);
         } catch (Throwable t) {
             handleThrowable(t);
@@ -157,6 +160,10 @@ public final class Bootstrap {
             }
         }
 
+        // 根据给定的路径数组前去加载给定的 class 文件,
+        // StandardClassLoader 继承了 java.net.URLClassLoader ,使用URLClassLoader的构造器构造类加载器.
+        // 根据父类加载器是否为 null, URLClassLoader将启用不同的构造器.
+        // 总之, common 类加载器没有指定父类加载器,违背双亲委派模型
         ClassLoader classLoader = ClassLoaderFactory.createClassLoader// 创建类加载器, 如果parent 是0,则
             (repositories, parent);
 
@@ -171,6 +178,7 @@ public final class Bootstrap {
         // Register the server classloader
         ObjectName objectName =
             new ObjectName("Catalina:type=ServerClassLoader,name=" + name);
+        // 生命周期管理.
         mBeanServer.registerMBean(classLoader, objectName);
 
         return classLoader;
@@ -238,33 +246,35 @@ public final class Bootstrap {
         setCatalinaBase();
 
         // 初始化类加载器,重要的一个步骤
+        // tomcat 独特的类加载器, 违背双亲委派模型
         initClassLoaders();
 
+        // 将设置线程上下文类加载器.
         Thread.currentThread().setContextClassLoader(catalinaLoader);
 
-        SecurityClassLoad.securityClassLoad(catalinaLoader);
+        SecurityClassLoad.securityClassLoad(catalinaLoader); // 线程安全的加载 class  负责加载Tomcat容器所需的class 检查是否安全, 不安全直接结束
 
         // Load our startup class and call its process() method
         if (log.isDebugEnabled())
             log.debug("Loading startup class");
         Class<?> startupClass =
             catalinaLoader.loadClass
-            ("org.apache.catalina.startup.Catalina");
-        Object startupInstance = startupClass.newInstance();
+            ("org.apache.catalina.startup.Catalina");// 加载主类
+        Object startupInstance = startupClass.newInstance();// 反射获取实例
 
         // Set the shared extensions class loader
         if (log.isDebugEnabled())
             log.debug("Setting startup class properties");
         String methodName = "setParentClassLoader";
         Class<?> paramTypes[] = new Class[1];
-        paramTypes[0] = Class.forName("java.lang.ClassLoader");
-        Object paramValues[] = new Object[1];
-        paramValues[0] = sharedLoader;
+        paramTypes[0] = Class.forName("java.lang.ClassLoader");// 创建一个抽象类类加载器类对象
+        Object paramValues[] = new Object[1]; // 创建一个对象数组
+        paramValues[0] = sharedLoader; // 对象数组中放入分享类加载器
         Method method =
-            startupInstance.getClass().getMethod(methodName, paramTypes);
-        method.invoke(startupInstance, paramValues);
+            startupInstance.getClass().getMethod(methodName, paramTypes);// 从Catalina 类获取setParentClassLoader方法对象,
+        method.invoke(startupInstance, paramValues);//  调用该方法,传入 sharedLoader , Catalina.parentClassLoader = sharedLoader
 
-        catalinaDaemon = startupInstance;
+        catalinaDaemon = startupInstance;// catalinaDaemon = new Catalina();
 
     }
 
@@ -490,9 +500,9 @@ public final class Bootstrap {
             }
             // 如果命令是启动
             else if (command.equals("start")) {
-                daemon.setAwait(true);
-                daemon.load(args);
-                daemon.start();
+                daemon.setAwait(true);// bootstrap 和 Catalina 一脉相连, 这里设置, 方法内部设置 Catalina 实例setAwait方法
+                daemon.load(args);// args 为 空,方法内部调用 Catalina 的 load 方法.
+                daemon.start();// 相同, 反射调用 Catalina 的 start 方法 ,至此,启动结束
             } else if (command.equals("stop")) {
                 daemon.stopServer(args);
             } else if (command.equals("configtest")) {

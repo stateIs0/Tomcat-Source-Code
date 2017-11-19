@@ -215,7 +215,7 @@ public final class ClassLoaderFactory {
             }
         }
 
-        // Construct the class loader itself
+        // Construct the class loader itself // 获取
         final URL[] array = set.toArray(new URL[set.size()]);
         if (log.isDebugEnabled())
             for (int i = 0; i < array.length; i++) {

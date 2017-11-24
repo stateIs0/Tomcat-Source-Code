@@ -295,7 +295,7 @@ public class JIoEndpoint extends AbstractEndpoint {
 
                     try {
                         // SSL handshake
-                        serverSocketFactory.handshake(socket.getSocket());
+                        serverSocketFactory.handshake(socket.getSocket()); // 什么都不做
                     } catch (Throwable t) {
                         ExceptionUtils.handleThrowable(t);
                         if (log.isDebugEnabled()) {
@@ -305,11 +305,11 @@ public class JIoEndpoint extends AbstractEndpoint {
                         state = SocketState.CLOSED;
                     }
 
-                    if ((state != SocketState.CLOSED)) {
-                        if (status == null) {
-                            state = handler.process(socket, SocketStatus.OPEN);
-                        } else {
-                            state = handler.process(socket,status);
+                    if ((state != SocketState.CLOSED)) {// open
+                        if (status == null) { // status == null
+                            state = handler.process(socket, SocketStatus.OPEN);// AbstractProtocol.process(); state 变为 close
+                        } else { // handler == Http11Protocol$Http11ConnectionHandler
+                            state = handler.process(socket,status); // state = closed
                         }
                     }
                     if (state == SocketState.CLOSED) {
@@ -317,9 +317,9 @@ public class JIoEndpoint extends AbstractEndpoint {
                         if (log.isTraceEnabled()) {
                             log.trace("Closing socket:"+socket);
                         }
-                        countDownConnection();
+                        countDownConnection();// 进入该方法
                         try {
-                            socket.getSocket().close();
+                            socket.getSocket().close(); // 关闭流
                         } catch (IOException e) {
                             // Ignore
                         }
@@ -328,10 +328,10 @@ public class JIoEndpoint extends AbstractEndpoint {
                             state == SocketState.UPGRADED){
                         socket.setKeptAlive(true);
                         socket.access();
-                        launch = true;
+                        launch = true; // 此时才走finally try 逻辑
                     } else if (state == SocketState.LONG) {
                         socket.access();
-                        waitingRequests.add(socket);
+                        waitingRequests.add(socket);// 长连接，
                     }
                 } finally {
                     if (launch) {
@@ -356,7 +356,7 @@ public class JIoEndpoint extends AbstractEndpoint {
                     }
                 }
             }
-            socket = null;
+            socket = null; // 完成请求
             // Finish up this request
         }
 

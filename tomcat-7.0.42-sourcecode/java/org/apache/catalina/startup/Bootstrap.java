@@ -449,60 +449,37 @@ public final class Bootstrap {
 
         // daemon 就是 bootstrap
         if (daemon == null) {
-            // Don't set daemon until init() has completed 不要在init()完成之前设置守护者
-            // 如果守护线程是 null 创建一个 bootstrap
             Bootstrap bootstrap = new Bootstrap();
             try {
-                // 初始化
                 bootstrap.init();
             } catch (Throwable t) {
-                // 处理异常(抛出)
                 handleThrowable(t);
-                // 打印异常
                 t.printStackTrace();
-                // 结束
                 return;
             }
-            // 初始化结束后, 设置bootstrap 为守护者
             daemon = bootstrap;
         } else {
-            // When running as a service the call to stop will be on a new
-            // thread so make sure the correct class loader is used to prevent
-            // a range of class not found exceptions.
-            /*
-            当作为一个服务运行时，停止的呼叫将会在一个新的
-            线程，确保正确的类装入器用于防止
-            一系列的类没有发现异常。
-             */
-
-            // 如果已经初始化过了, 则将该线程的类加载器设置为 bootstrap 的类加载器
             Thread.currentThread().setContextClassLoader(daemon.catalinaLoader);
         }
 
         try {
-            // 命令
             String command = "start";
-            // 如果命令行中输入了参数
             if (args.length > 0) {
-                // 命令 = 最后一个命令
                 command = args[args.length - 1];
             }
-            // 如果命令是启动
             if (command.equals("startd")) {
                 args[args.length - 1] = "start";
                 daemon.load(args);
                 daemon.start();
             }
-            // 如果命令是停止了
             else if (command.equals("stopd")) {
                 args[args.length - 1] = "stop";
                 daemon.stop();
             }
-            // 如果命令是启动
             else if (command.equals("start")) {
-                daemon.setAwait(true);// bootstrap 和 Catalina 一脉相连, 这里设置, 方法内部设置 Catalina 实例setAwait方法
-                daemon.load(args);// args 为 空,方法内部调用 Catalina 的 load 方法.
-                daemon.start();// 相同, 反射调用 Catalina 的 start 方法 ,至此,启动结束
+                daemon.setAwait(true);
+                daemon.load(args);
+                daemon.start();
             } else if (command.equals("stop")) {
                 daemon.stopServer(args);
             } else if (command.equals("configtest")) {
@@ -515,14 +492,12 @@ public final class Bootstrap {
                 log.warn("Bootstrap: command \"" + command + "\" does not exist.");
             }
         } catch (Throwable t) {
-            // Unwrap the Exception for clearer error reporting
             if (t instanceof InvocationTargetException &&
                     t.getCause() != null) {
                 t = t.getCause();
             }
             handleThrowable(t);
             t.printStackTrace();
-            // 非正常退出
             System.exit(1);
         }
 

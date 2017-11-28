@@ -1,0 +1,230 @@
+十一月 14, 2017 9:29:50 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/cxs/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+十一月 14, 2017 9:29:50 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:29:50 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:29:50 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 914 ms
+十一月 14, 2017 9:29:50 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+十一月 14, 2017 9:29:50 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/@VERSION@
+十一月 14, 2017 9:29:50 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/docs
+十一月 14, 2017 9:29:51 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/examples
+十一月 14, 2017 9:29:51 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/host-manager
+十一月 14, 2017 9:29:51 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/manager
+十一月 14, 2017 9:37:08 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/cxs/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+十一月 14, 2017 9:37:08 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:37:08 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:37:08 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 504 ms
+十一月 14, 2017 9:37:08 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+十一月 14, 2017 9:37:08 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/@VERSION@
+十一月 14, 2017 9:37:08 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/docs
+十一月 14, 2017 9:37:09 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/examples
+十一月 14, 2017 9:37:09 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/host-manager
+十一月 14, 2017 9:37:09 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/manager
+十一月 14, 2017 9:37:09 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/ROOT
+十一月 14, 2017 9:37:09 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:37:09 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:37:09 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 1001 ms
+十一月 14, 2017 9:37:10 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:37:10 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:37:10 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+十一月 14, 2017 9:37:10 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:37:10 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:37:10 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:37:10 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:40:42 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/cxs/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+十一月 14, 2017 9:40:42 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:40:42 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:40:42 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 474 ms
+十一月 14, 2017 9:40:42 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+十一月 14, 2017 9:40:42 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/@VERSION@
+十一月 14, 2017 9:40:42 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/docs
+十一月 14, 2017 9:40:42 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/examples
+十一月 14, 2017 9:40:43 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/host-manager
+十一月 14, 2017 9:40:43 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/manager
+十一月 14, 2017 9:40:43 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/ROOT
+十一月 14, 2017 9:40:43 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:40:43 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:40:43 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 1117 ms
+十一月 14, 2017 9:40:44 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:40:44 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:40:44 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+十一月 14, 2017 9:40:44 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:40:44 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 9:40:44 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 9:40:44 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:02:05 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/cxs/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+十一月 14, 2017 10:02:05 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:02:05 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:02:05 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 396 ms
+十一月 14, 2017 10:02:05 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+十一月 14, 2017 10:02:05 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/@VERSION@
+十一月 14, 2017 10:02:05 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/docs
+十一月 14, 2017 10:02:06 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/examples
+十一月 14, 2017 10:02:06 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/host-manager
+十一月 14, 2017 10:02:06 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/manager
+十一月 14, 2017 10:02:06 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/ROOT
+十一月 14, 2017 10:02:06 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:02:06 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:02:06 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 948 ms
+十一月 14, 2017 10:02:34 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:02:34 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:02:34 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+十一月 14, 2017 10:02:34 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:02:34 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:02:34 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:02:34 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:05:09 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/cxs/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+十一月 14, 2017 10:05:09 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:05:09 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:05:09 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 432 ms
+十一月 14, 2017 10:05:09 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+十一月 14, 2017 10:05:09 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/@VERSION@
+十一月 14, 2017 10:05:09 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/docs
+十一月 14, 2017 10:05:09 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/examples
+十一月 14, 2017 10:05:10 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/host-manager
+十一月 14, 2017 10:05:10 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/manager
+十一月 14, 2017 10:05:10 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/ROOT
+十一月 14, 2017 10:05:10 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:05:10 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:05:10 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 704 ms
+十一月 14, 2017 10:05:13 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:05:13 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:05:13 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+十一月 14, 2017 10:05:13 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:05:13 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:05:13 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:05:13 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:06:24 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/cxs/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+十一月 14, 2017 10:06:25 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:06:25 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 435 ms
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/@VERSION@
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/docs
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/examples
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/host-manager
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/manager
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory /Users/cxs/code/Tomcat-Source-Code/catalina-home/webapps/ROOT
+十一月 14, 2017 10:06:25 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:06:25 下午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:06:25 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 711 ms
+十一月 14, 2017 10:06:27 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:06:27 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:06:27 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+十一月 14, 2017 10:06:27 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:06:27 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["ajp-bio-8009"]
+十一月 14, 2017 10:06:27 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-bio-8080"]
+十一月 14, 2017 10:06:27 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["ajp-bio-8009"]

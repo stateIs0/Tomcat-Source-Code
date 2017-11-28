@@ -1,0 +1,14 @@
+十一月 25, 2017 8:45:19 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-bio-8080"]
+十一月 25, 2017 8:45:20 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["ajp-bio-8009"]
+十一月 25, 2017 8:45:20 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+十一月 25, 2017 8:45:20 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-bio-8080"]
+十一月 25, 2017 8:45:20 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["ajp-bio-8009"]
+十一月 25, 2017 8:45:20 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-bio-8080"]
+十一月 25, 2017 8:45:20 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["ajp-bio-8009"]

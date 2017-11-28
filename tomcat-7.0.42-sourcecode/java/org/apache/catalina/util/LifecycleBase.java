@@ -120,7 +120,6 @@ public abstract class LifecycleBase implements Lifecycle {
             invalidTransition(Lifecycle.BEFORE_INIT_EVENT);
         }
         // 2
-        // 钩子方法
         setStateInternal(LifecycleState.INITIALIZING, null, false);
 
         try {

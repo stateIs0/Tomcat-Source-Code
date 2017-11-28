@@ -901,8 +901,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
 
         // Setting up the I/O
         setSocketWrapper(socketWrapper);
-        getInputBuffer().init(socketWrapper, endpoint);
-        getOutputBuffer().init(socketWrapper, endpoint);
+        getInputBuffer().init(socketWrapper, endpoint);// 设置输入流
+        getOutputBuffer().init(socketWrapper, endpoint);// 设置输出流
 
         // Flags
         error = false;
@@ -949,7 +949,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                     // Set this every time in case limit has been changed via JMX
                     request.getMimeHeaders().setLimit(endpoint.getMaxHeaderCount());
                     // Currently only NIO will ever return false here
-                    if (!getInputBuffer().parseHeaders()) {
+                    if (!getInputBuffer().parseHeaders()) {// 解析header
                         // We've read part of the request, don't recycle it
                         // instead associate it with the socket
                         openSocket = true;
@@ -995,7 +995,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                 // Setting up filters, and parse some request headers
                 rp.setStage(org.apache.coyote.Constants.STAGE_PREPARE);
                 try {
-                    prepareRequest();
+                    prepareRequest();// 准备请求内容
                 } catch (Throwable t) {
                     ExceptionUtils.handleThrowable(t);
                     if (getLog().isDebugEnabled()) {
@@ -1020,7 +1020,9 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             if (!error) {
                 try {
                     rp.setStage(org.apache.coyote.Constants.STAGE_SERVICE);
-                    adapter.service(request, response);
+                    adapter.service(request, response); // 真正处理的方法 CoyoteAdapter
+                    // 还记的初始化Connector 时的适配器吗，new Http11Protocol(new CoyoteAdapter(new Connector（JIoEndpoint）))
+
                     // Handle when the response was committed before a serious
                     // error occurred.  Throwing a ServletException should both
                     // set the status to 500 and set the errorException.
@@ -1031,7 +1033,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                                 (!isAsync() &&
                                 statusDropsConnection(response.getStatus()));
                     }
-                    setCometTimeouts(socketWrapper);
+                    setCometTimeouts(socketWrapper); // 什么都不做
                 } catch (InterruptedIOException e) {
                     error = true;
                 } catch (HeadersTooLargeException e) {
@@ -1064,7 +1066,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                     // thread if the servlet has rejected it.
                     getInputBuffer().setSwallowInput(false);
                 }
-                endRequest();
+                endRequest();// 结束请求
             }
 
             rp.setStage(org.apache.coyote.Constants.STAGE_ENDOUTPUT);

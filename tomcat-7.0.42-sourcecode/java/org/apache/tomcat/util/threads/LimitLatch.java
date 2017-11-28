@@ -19,7 +19,6 @@ package org.apache.tomcat.util.threads;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
-
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
@@ -123,8 +122,8 @@ public class LimitLatch {
         sync.releaseShared(0);
         long result = getCount();
         if (log.isDebugEnabled()) {
-            log.debug("Counting down["+Thread.currentThread().getName()+"] latch="+result);
-    }
+            log.debug("Counting down[" + Thread.currentThread().getName() + "] latch=" + result);
+        }
         return result;
     }
 

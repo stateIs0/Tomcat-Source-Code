@@ -70,7 +70,7 @@ public class Connector extends LifecycleMBeanBase  {
         // Instantiate protocol handler
         try {
             Class<?> clazz = Class.forName(protocolHandlerClassName);
-            this.protocolHandler = (ProtocolHandler) clazz.newInstance();
+            this.protocolHandler = (ProtocolHandler) clazz.newInstance();// 反射创建protocolHandler 默认 http1.1 协议实现 （org.apache.coyote.http11.Http11Protocol）
         } catch (Exception e) {
             log.error(sm.getString(
                     "coyoteConnector.protocolHandlerInstantiationFailed"), e);
@@ -218,7 +218,7 @@ public class Connector extends LifecycleMBeanBase  {
     /**
      * Coyote protocol handler.
      */
-    protected ProtocolHandler protocolHandler = null;
+    protected ProtocolHandler protocolHandler = null;//Http11Protocol
 
 
     /**

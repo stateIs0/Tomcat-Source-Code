@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.LogManager;
-
 import org.apache.catalina.Container;
 import org.apache.catalina.Globals;
 import org.apache.catalina.LifecycleException;

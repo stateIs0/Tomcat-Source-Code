@@ -19,6 +19,10 @@
 package org.apache.tomcat.util.digester;
 
 
+import org.apache.catalina.Container;
+import org.apache.catalina.Server;
+import org.apache.catalina.connector.Connector;
+import org.apache.coyote.ProtocolHandler;
 import org.xml.sax.Attributes;
 
 
@@ -135,6 +139,7 @@ public class ObjectCreateRule extends Rule {
                     "}New " + realClassName);
         }
 
+
         if (realClassName == null) {
             throw new NullPointerException("No class name specified for " +
                     namespace + " " + name);
@@ -143,6 +148,10 @@ public class ObjectCreateRule extends Rule {
         // Instantiate the new object and push it on the context stack
         Class<?> clazz = digester.getClassLoader().loadClass(realClassName);
         Object instance = clazz.newInstance();
+        if (instance instanceof Connector
+            || instance instanceof ProtocolHandler){
+            System.out.println(clazz.getName());
+        }
         digester.push(instance);
     }
 

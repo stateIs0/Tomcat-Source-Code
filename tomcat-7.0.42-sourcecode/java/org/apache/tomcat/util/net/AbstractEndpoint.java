@@ -724,7 +724,7 @@ public abstract class AbstractEndpoint {
         if (maxConnections==-1) return -1;
         LimitLatch latch = connectionLimitLatch;
         if (latch!=null) {
-            long result = latch.countDown();
+            long result = latch.countDown(); // 使用 AtomicLong 获取当前值，初始值为0，
             if (result<0) {
                 getLog().warn("Incorrect connection count, multiple socket.close called on the same socket." );
             }

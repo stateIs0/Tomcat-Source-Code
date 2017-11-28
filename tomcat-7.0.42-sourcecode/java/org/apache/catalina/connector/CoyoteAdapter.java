@@ -54,6 +54,8 @@ import org.apache.tomcat.util.res.StringManager;
  * Implementation of a request processor which delegates the processing to a
  * Coyote processor.
  *
+ * 实现了request 的处理和代表处理中的连接处理？？？
+ *
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  * @version $Id: CoyoteAdapter.java 1452797 2013-03-05 14:04:57Z markt $
@@ -363,7 +365,7 @@ public class CoyoteAdapter implements Adapter {
                         org.apache.coyote.Response res)
         throws Exception {
 
-        Request request = (Request) req.getNote(ADAPTER_NOTES);
+        Request request = (Request) req.getNote(ADAPTER_NOTES); // 实现了 servlet 标准的 Request
         Response response = (Response) res.getNote(ADAPTER_NOTES);
 
         if (request == null) {
@@ -375,7 +377,7 @@ public class CoyoteAdapter implements Adapter {
             response.setCoyoteResponse(res);
 
             // Link objects
-            request.setResponse(response);
+            request.setResponse(response); // 互相关联
             response.setRequest(request);
 
             // Set as notes
@@ -383,12 +385,12 @@ public class CoyoteAdapter implements Adapter {
             res.setNote(ADAPTER_NOTES, response);
 
             // Set query string encoding
-            req.getParameters().setQueryStringEncoding
+            req.getParameters().setQueryStringEncoding // 解析 uri
                 (connector.getURIEncoding());
 
         }
 
-        if (connector.getXpoweredBy()) {
+        if (connector.getXpoweredBy()) { // 网站安全狗IIS
             response.addHeader("X-Powered-By", POWERED_BY);
         }
 
@@ -400,12 +402,12 @@ public class CoyoteAdapter implements Adapter {
             // Parse and set Catalina and configuration specific
             // request parameters
             req.getRequestProcessor().setWorkerThreadName(Thread.currentThread().getName());
-            boolean postParseSuccess = postParseRequest(req, request, res, response);
+            boolean postParseSuccess = postParseRequest(req, request, res, response); // 解析请求内容
             if (postParseSuccess) {
                 //check valves if we support async
                 request.setAsyncSupported(connector.getService().getContainer().getPipeline().isAsyncSupported());
-                // Calling the container
-                connector.getService().getContainer().getPipeline().getFirst().invoke(request, response);
+                // Calling the container 调用 容器
+                connector.getService().getContainer().getPipeline().getFirst().invoke(request, response); // 一个复杂的调用
 
                 if (request.isComet()) {
                     if (!response.isClosed() && !response.isError()) {
@@ -532,7 +534,7 @@ public class CoyoteAdapter implements Adapter {
 
 
     /**
-     * Parse additional request parameters.
+     * Parse additional request parameters. 解析额外的请求参数
      */
     protected boolean postParseRequest(org.apache.coyote.Request req,
                                        Request request,

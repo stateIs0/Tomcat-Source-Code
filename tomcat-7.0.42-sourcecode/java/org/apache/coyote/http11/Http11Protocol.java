@@ -181,7 +181,7 @@ public class Http11Protocol extends AbstractHttp11JsseProtocol {
             processor.setServer(proto.getServer());
             processor.setDisableKeepAlivePercentage(
                     proto.getDisableKeepAlivePercentage());
-            register(processor);
+            register(processor); // 注册到 JMX
             return processor;
         }
 

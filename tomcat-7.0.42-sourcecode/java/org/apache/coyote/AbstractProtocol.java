@@ -551,25 +551,25 @@ public abstract class AbstractProtocol implements ProtocolHandler,
 
         public SocketState process(SocketWrapper<S> socket,
                 SocketStatus status) {
-            Processor<S> processor = connections.remove(socket.getSocket());
+            Processor<S> processor = connections.remove(socket.getSocket()); // connections 是用于缓存长连接的socket
 
-            if (status == SocketStatus.DISCONNECT && processor == null) {
+            if (status == SocketStatus.DISCONNECT && processor == null) { // 如果是断开连接状态且协议处理器为null
                 //nothing more to be done endpoint requested a close
                 //and there are no object associated with this connection
                 return SocketState.CLOSED;
             }
 
-            socket.setAsync(false);
+            socket.setAsync(false);// 非异步
 
             try {
                 if (processor == null) {
-                    processor = recycledProcessors.poll();
+                    processor = recycledProcessors.poll();// 如果从缓存中没取到，从可以循环使用的 ConcurrentLinkedQueue 获取
                 }
                 if (processor == null) {
-                    processor = createProcessor();
+                    processor = createProcessor(); // 如果还没有，则创建一个
                 }
 
-                initSsl(socket, processor);
+                initSsl(socket, processor); // 设置SSL 属性，默认为null，可以配置
 
                 SocketState state = SocketState.CLOSED;
                 do {
@@ -580,13 +580,13 @@ public abstract class AbstractProtocol implements ProtocolHandler,
                         // event (see BZ 54022)
                     } else if (processor.isAsync() ||
                             state == SocketState.ASYNC_END) {
-                        state = processor.asyncDispatch(status);
+                        state = processor.asyncDispatch(status); // 如果是异步的
                     } else if (processor.isComet()) {
-                        state = processor.event(status);
+                        state = processor.event(status); // 事件驱动？？？
                     } else if (processor.isUpgrade()) {
-                        state = processor.upgradeDispatch();
+                        state = processor.upgradeDispatch(); // 升级转发？？？
                     } else {
-                        state = processor.process(socket);
+                        state = processor.process(socket); // 默认的 AbstractHttp11Processor.process
                     }
     
                     if (state != SocketState.CLOSED && processor.isAsync()) {

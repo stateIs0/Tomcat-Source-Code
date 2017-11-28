@@ -556,7 +556,7 @@ public class Catalina {
         InputStream inputStream = null;
         File file = null;
         try {
-            file = configFile();
+            file = configFile();// server.xml
             inputStream = new FileInputStream(file);
             inputSource = new InputSource(file.toURI().toURL().toString());
         } catch (Exception e) {
@@ -614,7 +614,7 @@ public class Catalina {
         try {
             inputSource.setByteStream(inputStream);
             digester.push(this);
-            digester.parse(inputSource);
+            digester.parse(inputSource);// 此方法和 createStartDigester 对应,是解析或加载 server.xml 重要的步骤. 并初始化 Server
         } catch (SAXParseException spe) {
             log.warn("Catalina.start using " + getConfigFile() + ": " +
                     spe.getMessage());

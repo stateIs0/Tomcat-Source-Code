@@ -36,7 +36,7 @@ public class StandardClassLoader
     implements StandardClassLoaderMBean {
 
     public StandardClassLoader(URL repositories[]) {
-        super(repositories);// 使用了默认的 classLoader
+        super(repositories);// 使用了URLClassLoader的构造器
     }
 
     public StandardClassLoader(URL repositories[], ClassLoader parent) {

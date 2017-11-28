@@ -116,11 +116,12 @@ public final class LifecycleSupport {
      * @param data Event data
      */
     public void fireLifecycleEvent(String type, Object data) {
-
+        // 事件监听,观察者模式的另一种方式
         LifecycleEvent event = new LifecycleEvent(lifecycle, type, data);
-        LifecycleListener interested[] = listeners;
+        LifecycleListener interested[] = listeners;// 监听器数组 关注 事件(启动或者关闭事件)
         // 循环通知所有生命周期时间侦听器????
         for (int i = 0; i < interested.length; i++)
+            // 每个监听器都有自己的逻辑
             interested[i].lifecycleEvent(event);
 
     }

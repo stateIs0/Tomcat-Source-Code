@@ -107,6 +107,9 @@ public final class Bootstrap {
     }
 
 
+    /*
+
+     */
     private ClassLoader createClassLoader(String name, ClassLoader parent)
         throws Exception {
 
@@ -241,9 +244,9 @@ public final class Bootstrap {
 
         // Set Catalina path
         // 设置 catalinaHome
-        setCatalinaHome();
+        setCatalinaHome();// 实例配置位置，也就是一个tomcat可以配置多个实例，实例里面有自己的配置
         // 设置 Catalina 工作目录
-        setCatalinaBase();
+        setCatalinaBase();//tomcat安装位置
 
         // 初始化类加载器,重要的一个步骤
         // tomcat 独特的类加载器, 违背双亲委派模型
@@ -545,7 +548,7 @@ public final class Bootstrap {
      */
     private void setCatalinaBase() {
 
-        // 获取到 Catalina-home
+        // 获取到 Catalina-base
         if (System.getProperty(Globals.CATALINA_BASE_PROP) != null) {
             return;
         }

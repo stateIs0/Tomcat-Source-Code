@@ -4,6 +4,8 @@
 .iml
 target/
 tomcat-study.iml
+.clss
+.log
 
 
 
